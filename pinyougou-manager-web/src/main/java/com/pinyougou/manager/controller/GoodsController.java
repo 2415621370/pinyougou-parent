@@ -1,7 +1,10 @@
 package com.pinyougou.manager.controller;
+import java.util.Arrays;
 import java.util.List;
 
+import com.pinyougou.pojo.TbItem;
 import com.pinyougou.pojogroup.Goods;
+import com.pinyougou.search.service.ItemSearchService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +25,10 @@ public class GoodsController {
 
 	@Reference
 	private GoodsService goodsService;
+
+
+	@Reference
+	ItemSearchService itemSearchService;
 	
 	/**
 	 * 返回全部列表
@@ -93,6 +100,7 @@ public class GoodsController {
 	public Result delete(Long [] ids){
 		try {
 			goodsService.delete(ids);
+			itemSearchService.deleteByGoodIds(Arrays.asList(ids));
 			return new Result(true, "删除成功"); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,6 +129,17 @@ public class GoodsController {
 	public Result updateStatus(Long[] ids, String status){
 		try {
 			goodsService.updateStatus(ids, status);
+			//同步到solr库里面
+			if(status.equals("1")){//1代表审核通过
+				List<TbItem> tbItems = goodsService.finditemListByGoodsAndStatus(ids, status);
+				if(null!=tbItems && tbItems.size()>0){
+					//调用搜索接口实现数据的批量导入
+					itemSearchService.importList(tbItems);
+				}else{
+					System.out.println("没有数据要导入");
+				}
+
+			}
 			return new Result(true, "成功");
 		} catch (Exception e) {
 			e.printStackTrace();
