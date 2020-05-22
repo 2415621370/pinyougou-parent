@@ -4,5 +4,9 @@
     <mapping directory="" vcs="svn" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/freemarkerdemo" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/jmsdemo" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/pinyougou-page-interface" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/pinyougou-page-service" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/pinyougou-page-web" vcs="svn" />
   </component>
 </project>
