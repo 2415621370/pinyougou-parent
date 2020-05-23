@@ -27,6 +27,10 @@
         <module name="pinyougou-solr-util" />
         <module name="SpringDataRedisDemo" />
         <module name="SpringDataSolrDemo" />
+        <module name="springjms-consumer-topic" />
+        <module name="springjms_consumer" />
+        <module name="springjms_producer" />
+        <module name="springjms_producer_topic" />
       </profile>
     </annotationProcessing>
   </component>

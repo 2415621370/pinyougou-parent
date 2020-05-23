@@ -28,7 +28,7 @@ public class QueueProducer {
 
         // 5，创建队列的对象
         Queue queue = session.createQueue("1709B-test-queue");
-
+//Destination;
         // 6，创建消息的生产者
         MessageProducer producer = session.createProducer(queue);
 

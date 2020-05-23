@@ -8,5 +8,9 @@
     <mapping directory="$PROJECT_DIR$/pinyougou-page-interface" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/pinyougou-page-service" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/pinyougou-page-web" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/springjms-consumer-topic" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/springjms_consumer" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/springjms_producer" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/springjms_producer_topic" vcs="svn" />
   </component>
 </project>

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.pinyougou.TestTempplate
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.059 s <<< FAILURE! - in com.pinyougou.TestTempplate
+findOne(com.pinyougou.TestTempplate)  Time elapsed: 0.013 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.pinyougou.TestTempplate.findOne(TestTempplate.java:57)
+

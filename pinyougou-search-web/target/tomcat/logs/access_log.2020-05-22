@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:11 +0800] "GET /search.html HTTP/1.1" 200 24989 http-bio-9104-exec-2 116
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:11 +0800] "GET /js/service/searchService.js HTTP/1.1" 304 - http-bio-9104-exec-3 108
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:11 +0800] "GET /js/base.js?21212121 HTTP/1.1" 304 - http-bio-9104-exec-1 89
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:11 +0800] "GET /js/controller/searchController.js HTTP/1.1" 304 - http-bio-9104-exec-4 86
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:11 +0800] "GET /%7B%7Bitem.image%7D%7D HTTP/1.1" 404 995 http-bio-9104-exec-7 2
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:12 +0800] "GET /assets/img/favicon.ico HTTP/1.1" 404 995 http-bio-9104-exec-8 2
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:27 +0800] "POST /itemsearch/search.do HTTP/1.1" 200 11 http-bio-9104-exec-9 4368
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:47 +0800] "POST /itemsearch/search.do HTTP/1.1" 200 11 http-bio-9104-exec-10 42
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:47 +0800] "POST /itemsearch/search.do HTTP/1.1" 200 11 http-bio-9104-exec-10 21
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:47 +0800] "POST /itemsearch/search.do HTTP/1.1" 200 11 http-bio-9104-exec-10 16
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:47 +0800] "POST /itemsearch/search.do HTTP/1.1" 200 11 http-bio-9104-exec-10 20
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:52 +0800] "GET /js/plugins/jquery/jquery.min.map HTTP/1.1" 404 1015 http-bio-9104-exec-10 2
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:03:56 +0800] "POST /itemsearch/search.do HTTP/1.1" 200 11 http-bio-9104-exec-8 58
+0:0:0:0:0:0:0:1 - - [22/May/2020:09:04:46 +0800] "POST /itemsearch/search.do HTTP/1.1" 200 592 http-bio-9104-exec-8 184
