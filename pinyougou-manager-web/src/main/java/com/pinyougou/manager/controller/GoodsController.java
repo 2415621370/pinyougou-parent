@@ -2,10 +2,13 @@ package com.pinyougou.manager.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import com.pinyougou.page.service.ItemPageService;
+import com.alibaba.fastjson.JSON;
+
 import com.pinyougou.pojo.TbItem;
 import com.pinyougou.pojogroup.Goods;
-import com.pinyougou.search.service.ItemSearchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +18,12 @@ import com.pinyougou.sellergoods.service.GoodsService;
 
 import entity.PageResult;
 import entity.Result;
+
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+
 /**
  * controller
  * @author Administrator
@@ -28,8 +37,19 @@ public class GoodsController {
 	private GoodsService goodsService;
 
 
-	@Reference
-	ItemSearchService itemSearchService;
+/*	@Reference
+	ItemSearchService itemSearchService;*/
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    @Autowired
+    private Destination queueSolrDestination;
+
+    @Autowired
+    private  Destination queueSolrDeleteDestination;
+	@Autowired
+	private  Destination topicPageDestination;
 	
 	/**
 	 * 返回全部列表
@@ -91,17 +111,34 @@ public class GoodsController {
 	public Goods findOne(Long id){
 		return goodsService.findOne(id);		
 	}
+
+	@Autowired
+	private Destination topicPageDeleteDestination;
 	
 	/**
 	 * 批量删除
-	 * @param ids
+	 * @param
 	 * @return
 	 */
 	@RequestMapping("/delete")
 	public Result delete(Long [] ids){
 		try {
 			goodsService.delete(ids);
-			itemSearchService.deleteByGoodIds(Arrays.asList(ids));
+			//itemSearchService.deleteByGoodIds(Arrays.asList(ids));
+			jmsTemplate.send(queueSolrDeleteDestination, new MessageCreator() {
+				@Override
+				public Message createMessage(Session session) throws JMSException {
+					return session.createObjectMessage(ids);
+				}
+			});
+
+			jmsTemplate.send(topicPageDeleteDestination, new MessageCreator() {
+				@Override
+				public Message createMessage(Session session) throws JMSException {
+					return session.createObjectMessage(ids);
+				}
+			});
+
 			return new Result(true, "删除成功"); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,10 +169,20 @@ public class GoodsController {
 			goodsService.updateStatus(ids, status);
 			//同步到solr库里面
 			if(status.equals("1")){//1代表审核通过
+
 				List<TbItem> tbItems = goodsService.finditemListByGoodsAndStatus(ids, status);
 				if(null!=tbItems && tbItems.size()>0){
-					//调用搜索接口实现数据的批量导入
-					itemSearchService.importList(tbItems);
+					//往消息队列里面发送数据 tbItems
+					//itemSearchService.importList(tbItems);
+                    //将list对象转化为json 字符串，序列化的过程
+                    String tbItemStr = JSON.toJSONString(tbItems);
+
+                    jmsTemplate.send(queueSolrDestination, new MessageCreator() {
+                        @Override
+                        public Message createMessage(Session session) throws JMSException {
+                            return session.createTextMessage(tbItemStr);
+                        }
+                    });
 				}else{
 					System.out.println("没有数据要导入");
 				}
@@ -143,7 +190,13 @@ public class GoodsController {
 				//生成相对应的商品详情页
 
 				for (Long id : ids) {
-					pageService.getItemHtml(id);
+					//pageService.getItemHtml(id);
+					jmsTemplate.send(topicPageDestination, new MessageCreator() {
+						@Override
+						public Message createMessage(Session session) throws JMSException {
+							return session.createTextMessage(id+"");
+						}
+					});
 				}
 
 
@@ -156,8 +209,8 @@ public class GoodsController {
 	}
 
 
-	@Reference
-	ItemPageService pageService;
+	/*@Reference
+	ItemPageService pageService;*/
 
 	/**
 	 * 生成静态页面（测试）
@@ -166,7 +219,7 @@ public class GoodsController {
 	 */
 	@RequestMapping("genHtml")
 	public void genHtml(Long goodId) throws Exception {
-		pageService.getItemHtml(goodId);
+	//	pageService.getItemHtml(goodId);
 	}
 
 	
