@@ -15,4 +15,7 @@ public interface ItemPageService {
      */
 
     public boolean getItemHtml(Long goodsId) throws IOException, Exception;
+
+    public boolean deleteItemHtml(Long[] goodsIds);
+
 }
