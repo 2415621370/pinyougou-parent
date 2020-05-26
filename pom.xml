@@ -33,6 +33,9 @@
       <module>springjms_consumer</module>
       <module>springjms_producer_topic</module>
       <module>springjms-consumer-topic</module>
+      <module>pinyougou-user-interface</module>
+    <module>pinyougou-user-service</module>
+    <module>pinyougou-user-web</module>
   </modules>
   <packaging>pom</packaging>
 

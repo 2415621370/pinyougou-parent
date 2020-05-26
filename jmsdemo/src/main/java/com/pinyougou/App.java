@@ -26,12 +26,19 @@ public class App
         request.setAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
 
+        //手机号：
          request.putQueryParameter("PhoneNumbers", "13263394663");
         //request.putQueryParameter("PhoneNumbers", phoneNumber);
+
+        //签名：
          request.putQueryParameter("SignName", "来嗨");
         //request.putQueryParameter("SignName", signName);
+
+        //模板code
          request.putQueryParameter("TemplateCode", "SMS_126345035");
        // request.putQueryParameter("TemplateCode", templateCode);
+
+        //模板的参数
         request.putQueryParameter("TemplateParam", "{\"code\":\"1111\"}");
        // request.putQueryParameter("TemplateParam", templateParam);
 
