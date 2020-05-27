@@ -11,7 +11,7 @@ app.controller('userController' ,function($scope,$controller   ,userService){
             return false;
         }
 
-        userService.add( $scope.entity  ).success(
+        userService.add( $scope.entity,$scope.smsCode ).success(
             function (res) {
                 alert(res.message);
             }
@@ -91,5 +91,21 @@ app.controller('userController' ,function($scope,$controller   ,userService){
 			}			
 		);
 	}
+
+
+	//发送验证码
+    $scope.sendCode=function () {
+		if($scope.entity.phone==null){
+			alert("请输入手机号！");
+			return ;
+		}
+        userService.sendCode($scope.entity.phone).success(
+        	function (res) {
+				alert(res.message);
+            }
+		)
+
+
+    }
     
 });	

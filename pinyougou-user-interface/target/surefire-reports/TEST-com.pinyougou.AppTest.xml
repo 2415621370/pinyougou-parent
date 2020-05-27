@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.pinyougou.AppTest" time="0.042" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.pinyougou.AppTest" time="0.06" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="CN"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_181\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\liqiang\AppData\Local\Temp\surefire5640136313109592537\surefirebooter1443833592058540197.jar C:\Users\liqiang\AppData\Local\Temp\surefire5640136313109592537 2020-05-26T11-02-32_844-jvmRun1 surefire1433066520516839432tmp surefire_06817586391078986354tmp"/>
+    <property name="sun.java.command" value="C:\Users\liqiang\AppData\Local\Temp\surefire468536324761822283\surefirebooter2500247433929593676.jar C:\Users\liqiang\AppData\Local\Temp\surefire468536324761822283 2020-05-27T09-57-56_429-jvmRun1 surefire5264889306637939033tmp surefire_04396270993400216694tmp"/>
     <property name="surefire.test.class.path" value="C:\mycode\yunjisuan\pinyougou-parent\pinyougou-user-interface\target\test-classes;C:\mycode\yunjisuan\pinyougou-parent\pinyougou-user-interface\target\classes;C:\bway\jars_maven\junit\junit\4.11\junit-4.11.jar;C:\bway\jars_maven\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\bway\jars_maven\com\pinyougou\pinyougou-pojo\1.0-SNAPSHOT\pinyougou-pojo-1.0-SNAPSHOT.jar;C:\bway\jars_maven\org\springframework\data\spring-data-solr\1.5.5.RELEASE\spring-data-solr-1.5.5.RELEASE.jar;C:\bway\jars_maven\org\springframework\spring-context\4.2.4.RELEASE\spring-context-4.2.4.RELEASE.jar;C:\bway\jars_maven\org\springframework\spring-aop\4.2.4.RELEASE\spring-aop-4.2.4.RELEASE.jar;C:\bway\jars_maven\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\bway\jars_maven\org\springframework\spring-beans\4.2.4.RELEASE\spring-beans-4.2.4.RELEASE.jar;C:\bway\jars_maven\org\springframework\spring-core\4.2.4.RELEASE\spring-core-4.2.4.RELEASE.jar;C:\bway\jars_maven\org\springframework\spring-expression\4.2.4.RELEASE\spring-expression-4.2.4.RELEASE.jar;C:\bway\jars_maven\org\springframework\spring-tx\4.1.9.RELEASE\spring-tx-4.1.9.RELEASE.jar;C:\bway\jars_maven\org\springframework\data\spring-data-commons\1.11.5.RELEASE\spring-data-commons-1.11.5.RELEASE.jar;C:\bway\jars_maven\org\apache\commons\commons-lang3\3.1\commons-lang3-3.1.jar;C:\bway\jars_maven\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\bway\jars_maven\org\apache\httpcomponents\httpclient\4.5.3\httpclient-4.5.3.jar;C:\bway\jars_maven\org\apache\httpcomponents\httpcore\4.4.4\httpcore-4.4.4.jar;C:\bway\jars_maven\commons-codec\commons-codec\1.10\commons-codec-1.10.jar;C:\bway\jars_maven\org\apache\httpcomponents\httpmime\4.2.2\httpmime-4.2.2.jar;C:\bway\jars_maven\org\apache\httpcomponents\httpclient-cache\4.2.2\httpclient-cache-4.2.2.jar;C:\bway\jars_maven\org\apache\solr\solr-solrj\4.10.3\solr-solrj-4.10.3.jar;C:\bway\jars_maven\commons-io\commons-io\2.3\commons-io-2.3.jar;C:\bway\jars_maven\org\apache\zookeeper\zookeeper\3.4.7\zookeeper-3.4.7.jar;C:\bway\jars_maven\org\codehaus\woodstox\wstx-asl\3.2.7\wstx-asl-3.2.7.jar;C:\bway\jars_maven\org\noggit\noggit\0.5\noggit-0.5.jar;C:\bway\jars_maven\com\fasterxml\jackson\core\jackson-databind\2.6.7\jackson-databind-2.6.7.jar;C:\bway\jars_maven\com\fasterxml\jackson\core\jackson-annotations\2.6.0\jackson-annotations-2.6.0.jar;C:\bway\jars_maven\com\fasterxml\jackson\core\jackson-core\2.6.7\jackson-core-2.6.7.jar;C:\bway\jars_maven\org\slf4j\slf4j-api\1.7.21\slf4j-api-1.7.21.jar;C:\bway\jars_maven\org\slf4j\jcl-over-slf4j\1.7.21\jcl-over-slf4j-1.7.21.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\liqiang"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\liqiang\AppData\Local\Temp\surefire5640136313109592537\surefirebooter1443833592058540197.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\liqiang\AppData\Local\Temp\surefire468536324761822283\surefirebooter2500247433929593676.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_181\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_181\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -62,5 +62,5 @@
     <property name="maven.repo.local" value="C:\bway\jars_maven"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.pinyougou.AppTest" time="0.001"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.pinyougou.AppTest" time="0.008"/>
 </testsuite>

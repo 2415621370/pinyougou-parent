@@ -1,7 +1,10 @@
 package com.pinyougou.user.service.impl;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.pinyougou.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -15,7 +18,11 @@ import com.pinyougou.pojo.TbUserExample.Criteria;
 
 import entity.PageResult;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.util.DigestUtils;
+
+import javax.jms.*;
 
 /**
  * 服务实现层
@@ -29,7 +36,7 @@ public class UserServiceImpl implements UserService {
 	private TbUserMapper userMapper;
 
 	@Autowired
-	RedisTemplate redisTemplate;
+	RedisTemplate<String,Object> redisTemplate;
 	
 	/**
 	 * 查询全部
@@ -146,9 +153,68 @@ public class UserServiceImpl implements UserService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
+
+	@Autowired
+	JmsTemplate jmsTemplate;
+
+	@Autowired
+	Destination smsDestination;
+
+	/**
+	 * s生成短信验证码
+	 * @param phone
+	 */
 	@Override
 	public void createSmsCode(String phone) {
+		//生成6位随机数
+		String code = (long)(Math.random()*1000000)+"";
+		System.out.println("验证码："+code);
 
+		//存入缓存 ：key（手机号） value（code）
+		redisTemplate.boundHashOps("smscode").put(phone,code);
+		//KEY -VALUE(key-value)
+
+		//发送到activemq
+		jmsTemplate.send(smsDestination, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				MapMessage mapMessage = session.createMapMessage();
+				mapMessage.setString("phoneNumber",phone);
+				mapMessage.setString("signName","来嗨");
+				mapMessage.setString("templateCode","SMS_126345035");
+
+				Map map = new HashMap();
+				map.put("code",code);
+				String s = JSON.toJSONString(map);
+
+
+				mapMessage.setString("templateParam",s);
+				return mapMessage;
+			}
+		});
+	}
+
+
+	/**
+	 * 判断验证码是否正确
+	 * @param phone
+	 * @param code
+	 * @return
+	 */
+	@Override
+	public boolean checkSmsCode(String phone, String code) {
+
+		//从缓存里面获取存储的验证码
+		String smscode =(String) redisTemplate.boundHashOps("smscode").get(phone);
+		if(null==smscode){
+			return false;
+		}
+
+		if(!smscode.equals(code)){
+			return false;
+		}
+
+		return true;
 	}
 
 }

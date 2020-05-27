@@ -63,5 +63,8 @@ public interface UserService {
 	 * @param phone
 	 */
 	public void createSmsCode(String phone);
+
+	//判断验证码是否正确
+	public boolean checkSmsCode(String phone,String code);
 	
 }

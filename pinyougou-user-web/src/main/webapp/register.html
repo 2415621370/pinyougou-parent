@@ -13,8 +13,8 @@
 	<script src="plugins/angularjs/angular.min.js"></script>
 
 	<script src="js/base.js"></script>
-	<script src="js/service/userService.js"></script>
-	<script src="js/controller/userController.js?212132322121"></script>
+	<script src="js/service/userService.js?232323"></script>
+	<script src="js/controller/userController.js?21212121"></script>
 
 
 
@@ -59,7 +59,7 @@
 					<div class="control-group">
 						<label for="inputPassword" class="control-label">短信验证码：</label>
 						<div class="controls">
-							<input type="text" placeholder="短信验证码" class="input-xfat input-xlarge">  <a href="#">获取短信验证码</a>
+							<input type="text" placeholder="短信验证码" class="input-xfat input-xlarge" ng-model="smsCode">  <a ng-click="sendCode()">获取短信验证码</a>
 						</div>
 					</div>
 					

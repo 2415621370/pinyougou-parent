@@ -68,4 +68,7 @@ public class TestSet {
     public void deleteAllValue(){
         redisTemplate.delete("nameset");
     }
+
+
+
 }

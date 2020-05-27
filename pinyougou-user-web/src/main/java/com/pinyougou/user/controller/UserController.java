@@ -45,10 +45,16 @@ public class UserController {
 	/**
 	 * 增加
 	 * @param user
+	 * @param smsCode 用户在前台页面输入的验证码
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbUser user){
+	public Result add(@RequestBody TbUser user,String smsCode){
+
+		boolean b = userService.checkSmsCode(user.getPhone(), smsCode);
+		if(b==false){
+			return new Result(false,"验证码输入错误");
+		}
 		try {
 			userService.add(user);
 			return new Result(true, "增加成功");
@@ -110,6 +116,18 @@ public class UserController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbUser user, int page, int rows  ){
 		return userService.findPage(user, page, rows);		
+	}
+
+	@RequestMapping("/sendCode")
+	public Result sendCode(String phone){
+		try{
+			userService.createSmsCode(phone);
+			return new Result(true,"验证码发送成功");
+		}catch(Exception e){
+			e.printStackTrace();
+			return new Result(false,"验证码发送失败");
+		}
+
 	}
 	
 }
